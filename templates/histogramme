@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Métrique 2</title>  <script type="text/javascript" src="https://http://ibk189.alwaysdata.net/histogramme/"></script>
+  </head>
+  <body>
+    <div id="chart_div"></div>
+    <script>
+      google.charts.load('current', { packages: ['corechart']   
+ });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart(data)   
+ {
+      
+        var dataTable = new google.visualization.DataTable(data);  
+        
+        var options = {
+          title: 'Titre de votre deuxième graphique',  
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(dataTable, options);
+      }
+
+    
+      fetch('/your_second_api_endpoint/')
+        .then(response => response.json())
+        .then(data => {
+          drawChart(data);
+        });
+    </script>
+  </body>
+</html>
